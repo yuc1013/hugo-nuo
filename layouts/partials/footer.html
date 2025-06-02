@@ -56,7 +56,7 @@
 </script>
 
 <!-- Google Analytics -->
-{{ if .Site.GoogleAnalytics }}
+{{ if .Site.Params.GoogleAnalytics }}
 {{ template "_internal/google_analytics_async.html" . }}
 {{ end }}
 

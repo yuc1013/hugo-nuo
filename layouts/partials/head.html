@@ -10,8 +10,9 @@
 {{- $manifest := "manifest.json" -}}
 {{- $bg := resources.Get (.Site.Params.bg | default "images/grey-prism.svg") -}}
 {{- $avatar := resources.Get (.Site.Params.avatar | default "images/avatar.png") -}}
-{{- $style := resources.Get "styles/main.scss" | resources.ExecuteAsTemplate "styles/main-rendered.scss" . | resources.ToCSS | resources.Minify -}}
-{{- $customStyle := resources.Get (.Site.Params.customStyle | default "styles/custom.scss") | resources.ToCSS | resources.Minify -}}
+{{- $signature := resources.Get (.Site.Params.signature | default "images/signature.svg") -}}
+{{- $style := resources.Get "styles/main.scss" | resources.ExecuteAsTemplate "styles/main-rendered.scss" . | css.Sass | resources.Minify -}}
+{{- $customStyle := resources.Get (.Site.Params.customStyle | default "styles/custom.scss") | css.Sass | resources.Minify -}}
 {{- $fontAwesome := "https://use.fontawesome.com/releases/v5.8.1/css/all.css" -}}
 {{- $fontAwesomeIntegrity := "sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" -}}
   <!-- DNS Prefetch -->
@@ -24,10 +25,10 @@
   {{ end }}
   <link href="//fonts.googleapis.com" rel="dns-prefetch">
   <link href="//fonts.gstatic.com" rel="dns-prefetch">
-  {{ with .Site.DisqusShortname }}<link href="///disqus.com" rel="dns-prefetch">{{ end }}
-  {{ with .Site.DisqusShortname }}<link href="//c.disquscdn.com" rel="dns-prefetch">{{ end }}
+  {{ with .Site.Params.DisqusShortname }}<link href="///disqus.com" rel="dns-prefetch">{{ end }}
+  {{ with .Site.Params.DisqusShortname }}<link href="//c.disquscdn.com" rel="dns-prefetch">{{ end }}
   {{ with .Site.Params.Gitment }}<link href="//imsun.github.io" rel="dns-prefetch">{{ end }}
-  {{ with .Site.GoogleAnalytics }}<link href="//www.google-analytics.com" rel="dns-prefetch">{{ end }}
+  {{ with .Site.Params.GoogleAnalytics }}<link href="//www.google-analytics.com" rel="dns-prefetch">{{ end }}
   {{ with .Site.Params.baidutongji }}<link href="//hm.baidu.com" rel="dns-prefetch">{{ end }}
 
   {{ if and (eq .Kind "page") (eq .Type "post") }}
@@ -81,7 +82,7 @@
 {{ end }}
 
 <!-- Site Generator -->
-<meta name="generator" content="Hugo {{ .Hugo.Version }}">
+<meta name="generator" content="Hugo {{ site.Hugo.Version }}">
 
 <!-- Permalink & RSSlink -->
 <link rel="canonical" href="{{ .Permalink }}">
@@ -131,7 +132,7 @@
 <!-- Main Styles -->
 <style>
   body {
-    background: rgb(244, 243, 241) url('{{ $bg.RelPermalink }}') repeat fixed;
+    /* background: rgb(244, 243, 241) url('{{ $bg.RelPermalink }}') repeat fixed; */
   }
 </style>
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">

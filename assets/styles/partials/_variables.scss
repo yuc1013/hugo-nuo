@@ -15,7 +15,8 @@ $green-light: rgba(0, 171, 107, 0.5);
 $green-invert: $green;
 
 /* Theme colors */
-$primary: $green;
+// $primary: $green;
+$primary: #A08059;
 $primary-invert: $green-invert;
 $light: $white-ter;
 $dark: $grey-darker;
@@ -42,6 +43,15 @@ $box-shadow-darker: rgba(0, 0, 0, 0.3);
 
 /* Typography */
 $family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", sans-serif;
+$family-serif: 
+    "Noto Serif SC",       /* 思源宋体（Google Fonts/Adobe） */
+    "Source Han Serif CN", /* Adobe 思源宋体本地版 */
+    -apple-system,         /* iOS/macOS 系统默认字体（San Francisco） */
+    BlinkMacSystemFont,    /* Chrome 兼容 macOS */
+    "PingFang SC",         /* 苹方简体（iOS 默认中文字体） */
+    "Hiragino Sans GB",    /* 冬青黑体（旧版 macOS 备用） */
+    "SimSun", "宋体",      /* Windows 宋体备用 */
+    serif;                 /* 通用衬线回退 */;
 $family-monospace: "Fira Code", "Roboto Mono", Menlo, Monaco, Consolas, "Courier New", Courier, monospace;
 $family-lobster: 'Lobster', cursive, $family-sans-serif;
 $size-1: 3rem;

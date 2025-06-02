@@ -1,12 +1,16 @@
 {{- $wechat := resources.Get (.Site.Params.wechat | default "images/qrcode.jpg") -}}
 {{- $avatar := resources.Get (.Site.Params.avatar | default "images/avatar.png") -}}
+{{- $signature := resources.Get (.Site.Params.signature | default "images/signature.svg") -}}
 
 <header class="site-header">
-  <a href="{{ .Site.BaseURL }}"><img class="avatar" src="{{ $avatar.RelPermalink }}" alt="Avatar"></a>
+  <!-- <a href="{{ .Site.BaseURL }}"><img class="avatar" src="{{ $avatar.RelPermalink }}" alt="Avatar"></a> -->
+  <!-- <a href="{{ .Site.BaseURL }}"><img class="avatar" src="{{ $signature.RelPermalink }}" alt="Avatar"></a> -->
   {{  if eq .Kind "home" }}
-  <h1 class="title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+  <!-- <h1 class="title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1> -->
+  <h1 class="title"><a href="{{ .Site.BaseURL }}"><img class="signature" src="{{ $signature.RelPermalink }}" alt="Signature"></a></h1>
   {{ else }}
-  <h2 class="title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h2>
+  <!-- <h2 class="title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h2> -->
+  <h2 class="title"><a href="{{ .Site.BaseURL }}"><img class="signature" src="{{ $signature.RelPermalink }}" alt="Signature"></a></h1>
   {{ end }}
   <p class="subtitle">{{ .Site.Params.subtitle }}</p>
   <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">

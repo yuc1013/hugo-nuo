@@ -12,7 +12,7 @@
       <h3>{{ .Key }}</h3>
       <ol>
         {{ range .Pages -}}
-          <li><a href="{{ .Permalink }}">{{ .Title }}</a>&nbsp;&nbsp;({{ .Date.Format "Jan 2, 2006" }})</li>
+          <li class="archive-entry"><a href="{{ .Permalink }}">{{ .Title }}</a>&nbsp;&nbsp;({{ .Date.Format "Jan 2, 2006" }})</li>
         {{ end -}}
       </ol>
     {{ end -}}

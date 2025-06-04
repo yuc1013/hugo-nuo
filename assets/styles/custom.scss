@@ -15,8 +15,24 @@ $alchemy-outer: #D0B9A2;
 
 // $link-raw: #180EA4;
 // $link-visted: #6023A2;
-$link-raw: #0000FF;
+// $link-raw: #0000ff;
+$link-raw: #1b36e8;
 $link-visted: #800080;
+
+//
+//
+//
+// 1. 全局覆盖
+//
+//
+//
+
+a {
+  text-decoration: none; /* 默认隐藏下划线 */
+  &:hover {
+    text-decoration: underline; /* 悬停时显示下划线 */
+  }
+}
 
 body {
   background: $golder;
@@ -25,15 +41,24 @@ body {
   }
 }
 
-.avatar {
-    width: 5rem;
-    height: 5rem;
-    margin-top: 1rem;
-    transition: transform ease-out .5s
-}
+
+//
+//
+//
+// 2. 菜单栏
+//
+//
+//
+
+// .avatar {
+//     width: 5rem;
+//     height: 5rem;
+//     margin-top: 1rem;
+//     transition: transform ease-out .5s
+// }
 
 .signature {
-  height: 8rem;
+  height: 7rem;
 }
 
 .subtitle {
@@ -42,12 +67,28 @@ body {
   margin: initial;
 }
 
-a {
-  text-decoration: none; /* 默认隐藏下划线 */
-  &:hover {
-    text-decoration: underline; /* 悬停时显示下划线 */
+.site-menu {
+  & .menu-item {
+    padding: .4rem 0;
   }
 }
+
+.social-menu {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  @media screen and (max-width: $tablet) {
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 1rem auto;
+    max-height: 125px;
+    overflow-y: hidden;
+    transition: all $easing $speed;
+  }
+}
+
 
 .site-header {
   // & ::selection {
@@ -68,12 +109,76 @@ a {
   }
 }
 
+//
+//
+//
+// 3. 主体内容
+//
+//
+//
 
-.site-menu {
-  & .menu-item {
-    padding: .4rem 0;
-    & a {
-      
+.post-entry .post-title {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+}
+
+.post-entry {
+  & + .post-entry {
+    border-color: $golder;
+  }
+
+  & .post-meta {
+    text-transform: none;
+  }
+}
+
+.post-title {
+  & a {
+    color: $link-raw;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:visited {
+      color: $link-visted; 
+    }
+  }
+}
+
+
+.post-detail {
+  & .post-header {
+    margin-bottom: 0;
+
+    & .post-title {
+      font-size: 1.75rem;
+    }
+
+    & .post-meta {
+      text-transform: none;
+    }
+  }
+}
+
+.post-content {
+  & a {
+    color: $link-raw;
+    &:hover {
+      border-bottom: none;
+      text-decoration: underline;
+    }
+    &:visited {
+      color: $link-visted; 
+    }
+    border-bottom: none;
+  }
+}
+
+.post-footer {
+  & a {
+    color: $text-strong;
+    &:hover {
+      color: $text-strong;
+      text-decoration: underline;
     }
   }
 }
@@ -98,32 +203,7 @@ a {
   }
 }
 
-.post-entry .post-title {
-    margin-top: 2rem;
-    font-size: 1.5rem;
-}
-
-.post-entry {
-  & + .post-entry {
-    border-color: $golder;
-  }
-}
-
-.post-detail {
-  & .post-header {
-    margin-bottom: 0;
-
-    & .post-title {
-      font-size: 1.75rem;
-    }
-
-    & .post-meta {
-      text-transform: none;
-    }
-  }
-}
-
-.post-title {
+.archive-entry {
   & a {
     color: $link-raw;
     &:hover {
@@ -134,7 +214,6 @@ a {
     }
   }
 }
-
 
 @media(prefers-color-scheme: dark) {
     body {
@@ -159,7 +238,7 @@ a {
     }
 }
 
-@media print, screen and (max-width: 800px) {
+@media print, screen and (max-width: $tablet) {
   .site-header {
     width: 100vw;
   }
@@ -182,5 +261,21 @@ a {
     & a {
       color: $link-raw;
     }
-  }
+  } 
 }
+
+// images & covers
+.post-entry .post-cover {
+    position: static;
+    width: 100%;
+    height: calc((85vw - 4rem)/3);
+    max-height: calc(44rem/3);
+    border: 2px solid $goldest;
+}
+
+@media screen and (max-width: $tablet) {
+    .post-entry .post-cover {
+        height:calc(100vw/3);
+        margin: 0
+    }
+} 
